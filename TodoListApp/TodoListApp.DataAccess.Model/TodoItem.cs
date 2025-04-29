@@ -13,6 +13,7 @@ namespace TodoListApp.DataAccess.Model
         public DateTime Created { get; set; }
         public DateTime Updated { get; set; }
         public DateTime DueDate { get; set; }
+        public bool IsDone { get; set; }
 
     }
 }
