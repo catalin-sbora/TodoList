@@ -15,11 +15,21 @@ namespace TodoListApp.Controllers
 
         public IActionResult Index()
         {
+            _logger.LogDebug($"{nameof(Index)} has been called");
             return View();
         }
 
         public IActionResult Privacy()
         {
+            try
+            {
+                //application logic
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"There is a problem processing the request: {ex.Message}");
+            }
+
             return View();
         }
 
