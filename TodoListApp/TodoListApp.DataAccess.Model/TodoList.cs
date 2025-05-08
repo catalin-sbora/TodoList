@@ -1,8 +1,7 @@
 ﻿namespace TodoListApp.DataAccess.Model
 {
-    public class TodoList
-    {
-        int Id { get; set; }
+    public class TodoList: BaseEntity
+    {        
         public string Title { get; set; } = "Empty List";
         public string? Description { get; set; }
         public string Owner { get; set; } = string.Empty;
