@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TodoListApp.DataAccess.Abst
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TodoListApp.DataAccess.Model", "TodoListApp.DataAccess.Model\TodoListApp.DataAccess.Model.csproj", "{B01E6FDD-9C25-4F5B-A816-699A39957C14}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TodoListApp.UnitTests", "TodoListApp.UnitTests\TodoListApp.UnitTests.csproj", "{91A44DA3-C514-45CF-8873-4DA16BF5524C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{B01E6FDD-9C25-4F5B-A816-699A39957C14}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B01E6FDD-9C25-4F5B-A816-699A39957C14}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B01E6FDD-9C25-4F5B-A816-699A39957C14}.Release|Any CPU.Build.0 = Release|Any CPU
+		{91A44DA3-C514-45CF-8873-4DA16BF5524C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{91A44DA3-C514-45CF-8873-4DA16BF5524C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{91A44DA3-C514-45CF-8873-4DA16BF5524C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{91A44DA3-C514-45CF-8873-4DA16BF5524C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

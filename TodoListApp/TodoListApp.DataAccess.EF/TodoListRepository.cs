@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,9 +16,11 @@ namespace TodoListApp.DataAccess.EF
         {
             
         }
-        public async Task<IEnumerable<TodoList>> GetByOwner(string ownerId)
+        public async Task<IEnumerable<TodoList>> GetByOwner(string ownerId, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+           return await dbContext.TodoLists.Where(
+                                       list=> list.Owner == ownerId)
+                .ToListAsync();
         }
     }
 }

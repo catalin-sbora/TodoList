@@ -9,6 +9,6 @@ namespace TodoListApp.DataAccess.Abstractions
 {
     public interface ITodoListRepository:IAsyncRepository<TodoList>
     {
-        Task<IEnumerable<TodoList>> GetByOwner(string ownerId);
+        Task<IEnumerable<TodoList>> GetByOwner(string ownerId, CancellationToken cancellationToken);
     }
 }

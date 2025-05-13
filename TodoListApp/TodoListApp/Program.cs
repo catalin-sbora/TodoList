@@ -1,7 +1,10 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
+using TodoListApp.AppLogic;
 using TodoListApp.Data;
+using TodoListApp.DataAccess.Abstractions;
+using TodoListApp.DataAccess.EF;
 
 namespace TodoListApp
 {
@@ -26,6 +29,13 @@ namespace TodoListApp
             var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
             builder.Services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(connectionString));
+            
+
+            IDataContextInitializer dataContextInitializer = new EFDataContextInitializer();
+            dataContextInitializer.Initialize(builder.Services, builder.Configuration)
+                                  .Wait();
+
+            builder.Services.AddScoped<TodoListService>();
             builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
             builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)

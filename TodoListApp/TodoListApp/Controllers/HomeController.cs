@@ -1,22 +1,30 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
+using TodoListApp.AppLogic;
 using TodoListApp.Models;
+using TodoListApp.UI.Models;
 
 namespace TodoListApp.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+        private readonly TodoListService _todoListService;
+        public HomeController(TodoListService todoService, ILogger<HomeController> logger)
         {
             _logger = logger;
+            _todoListService = todoService;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index(CancellationToken cancellationToken)
         {
             _logger.LogDebug($"{nameof(Index)} has been called");
-            return View();
+            var viewModel = new TodoListHomeViewModel
+            {
+                TodoLists = await _todoListService.GetUserListsAsync("1", cancellationToken)
+            };
+
+            return View(viewModel);
         }
 
         public IActionResult Privacy()
