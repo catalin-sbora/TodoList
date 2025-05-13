@@ -14,6 +14,7 @@ namespace TodoListApp.DataAccess.EF
         {
             modelBuilder.Entity<TodoList>()
                         .HasKey(x => x.Id);
+
             modelBuilder.Entity<TodoList>()
                 .HasData(new TodoList
                 {

@@ -14,7 +14,13 @@ namespace TodoListApp.AppLogic
 
         public async Task<IEnumerable<TodoList>> GetUserListsAsync(string userId, CancellationToken cancellationToken)
         {
-
+            if (userId.Contains("1"))
+            {
+                throw new ArgumentException();
+            }
+            /*
+             additional logic here - validations/filtering/etc..
+             */
             return await _dataRepository.GetByOwner(userId, cancellationToken);          
         }
 

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
 using TodoListApp.AppLogic;
 using TodoListApp.UnitTests.DummyImplementation;
 
@@ -13,16 +9,30 @@ namespace TodoListApp.UnitTests
     {
 
         [TestMethod]
-        public async Task GetUserLists_Returns_Only_List_For_Current_User()
+        public void GetUserLists_Returns_Only_List_For_Current_User()
         {
             //Arrange
             TodoListService todoService = new TodoListService(new TodoListRepositoryFakeImplementation());
             //Act
-            var usersList = await todoService.GetUserListsAsync("1", CancellationToken.None);
+            var usersList = todoService.GetUserListsAsync("2", CancellationToken.None)
+                                       .Result;                     
+                                       
 
             //Assert
             Assert.AreEqual(1, usersList.Count());
-            Assert.AreEqual("1", usersList.ElementAt(0).Owner);
+            Assert.AreEqual("2", usersList.ElementAt(0).Owner);
         }
+
+        [TestMethod]
+        public async Task GetUserLists_Throws_ArgumentException_When_UserId_Is_Invalid()
+        {
+            //Arrange
+            TodoListService todoService = new TodoListService(new TodoListRepositoryFakeImplementation());
+            //Act
+
+            await Assert.ThrowsExceptionAsync<ArgumentException>(() => todoService.GetUserListsAsync("1", CancellationToken.None));
+            
+        }
+
     }
 }
